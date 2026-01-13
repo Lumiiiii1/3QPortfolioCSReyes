@@ -1,12 +1,48 @@
 <html>
     <head>
+        <meta charset="UTF-8">
+        <meta viewport content="width=device-width, initial-scale=1.0">
         <title>Club Membership Form</title>
         <style>
-
+          form{
+            background-color: rgb(255, 255, 255);
+            padding:25px;
+            border-radius:8% ;
+            box-shadow: 0 4px 15px rgba(211, 65, 65, 0.445);
+            width:100%;
+            max-width:500px;
+          }
+        body {
+            font-family: Verdana, Tahoma, sans-serif;
+            font-size: 18px;
+            color: rgb(247, 104, 140);
+            justify-content: center;
+            display:flex;
+            padding:20px;
+        }
+        fieldset{
+            border:1px solid #ddd;
+            border-radius:5px;
+            margin-bottom:20px;
+            padding:15px;
+        }
+        legend{
+            font-weight: bold;
+            color: #f17085;
+            padding: 0 10px;
+        }
+        label{
+            display:block;
+            margin-bottom: 15px;
+            font-size: 14px;
+            color: #f17085;
+        }
         </style>
     </head>
-    <body>
-        <form id="from" action="submit" method="post"
+    <body style="background-color: #ffbcc9;">
+
+        <div class="form-container">  
+        <form id="form" action="submit" method="post"
             onsubmit="return confirmSubmission()"
             onreset="return confirmReset()"
         >
@@ -15,23 +51,23 @@
                 <legend>Your Personal Information</legend><br/>
                 <label> Student ID:
                     <input type="number" name="studentID" required onblur="validateField(this)">
-                </label>
+                </label></br>
                 <label>Full Name:
                     <input type="text" name="fullName"  required onblur="validateField(this)">
-                </label>
-                <label>Birthday
+                </label></br>
+                <label>Birthday (mm/dd/yyyy)
                     <input type="text" name="fullName"  required onblur="validateField(this)">
-                </label>
+                </label></br>
                 <label>Email Address
                     <input type="text" name="fullName"  required onblur="validateField(this)">
-                </label>
+                </label></br>
                 </fieldset>
 
                 <fieldset>
                     <legend>Club Membership Details</legend>
                 <label>Mobile Phone:
                     <input type="text" name="mobile"  required onblur="validateField(this)">
-                </label>
+                </label></br>
                 <label>Grade Level
                     <select name="gradeLevel" required>
                         <option value="">Select Your Grade</option>
@@ -42,11 +78,11 @@
                         <option value="Gr11">Grade 11</option>
                         <option value="Gr12">Grade 12</option>
                     </select>
-                    </label>
+                    </label></br>
                 <label>Intern or Extern?
                     <input type="radio" name="membership" value="INT" required style="width: auto;">Intern
                     <input type="radio" name="membership" value="EXT" required style="width: auto;">Extern
-                </label>
+                </label></br>
                 <label>Preferred Organization/Club
                     <select name="choice" required>
                         <option value="">Choose Your Club</option>
@@ -57,10 +93,10 @@
                         <option value="BasketBall">Pallastro</option>
                         <option value="ChemIstry">ATOM</option>
                     </select>
-                </label>
+                </label></br>
                 <label>Why Do You Want To Join?
                     <textarea name="join" rows="4" required onblur="validateField(this)"></textarea>
-                </label>
+                </label></br>
 
             </fieldset>
             <div class="buttonss">
@@ -68,6 +104,7 @@
                 <input type="reset" value="Clear All">
             </div>
         </form>
+      </div>
         <script>
             function submission(){
                 return confirm("Are you sure you want to submit this form already?")
