@@ -1,0 +1,64 @@
+<html>
+    <body>
+        <h1>Club Membership Form</h1>
+        <form id="from" action="submit" method="post">
+            <fieldset>
+                <legend>Your Personal Information</legend><br/>
+                <label> Student ID:
+                    <input type="number" name="studentID" required onblur="validateField(this)">
+                </label>
+                <label>Full Name:
+                    <input type="text" name="fullName"  required onblur="validateField(this)">
+                </label>
+                <label>Birthday
+                    <input type="text" name="fullName"  required onblur="validateField(this)">
+                </label>
+                <label>Email Address
+                    <input type="text" name="fullName"  required onblur="validateField(this)">
+                </label>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Club Membership Details</legend>
+                <label>Mobile Phone:
+                    <input type="text" name="mobile"  required onblur="validateField(this)">
+                </label>
+                <label>Grade Level
+                    <select name="gradeLevel" required>
+                        <option value="">Select Your Grade</option>
+                        <option value="Gr7">Grade 7</option>
+                        <option value="Gr8">Grade 8</option>
+                        <option value="Gr9">Grade 9</option>
+                        <option value="Gr10">Grade 10</option>
+                        <option value="Gr11">Grade 11</option>
+                        <option value="Gr12">Grade 12</option>
+                    </select>
+                    </label>
+                <label>Intern or Extern?
+                    <input type="radio" name="membership" value="INT" required style="width: auto;">Intern
+                    <input type="radio" name="membership" value="EXT" required style="width: auto;">Extern
+                </label>
+                <label>Preferred Organization/Club
+                    <select name="choice" required>
+                        <option value="">Choose Your Club</option>
+                        <option value="ArT">Likha</option>
+                        <option value="FrisbEE">Alianti</option>
+                        <option value="BookWorm">Ellipsis</option>
+                        <option value="MakeR">Pisay XYZ</option>
+                        <option value="BasketBall">Pallastro</option>
+                        <option value="ChemIstry">ATOM</option>
+                    </select>
+                </label>
+                <label>Why Do You Want To Join?
+                    <textarea name="join" rows="4" required onblur="validateField(this)"></textarea>
+                </label>
+
+            </fieldset>
+            <div class="buttonss">
+                <input type="submit" value="Submit Info">
+                <input type="reset" value="Clear All">
+            </div>
+        </form>
+        
+    </body>
+</html>
