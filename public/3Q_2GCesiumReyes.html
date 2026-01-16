@@ -7,7 +7,7 @@
           form{
             background-color: rgb(255, 255, 255);
             padding:25px;
-            border-radius:8% ;
+            border-radius: 4%;
             box-shadow: 0 4px 15px rgba(211, 65, 65, 0.445);
             width:100%;
             max-width:500px;
@@ -28,14 +28,14 @@
         }
         legend{
             font-weight: bold;
-            color: #f17085;
+            color: #ee566f;
             padding: 0 10px;
         }
         label{
             display:block;
             margin-bottom: 15px;
             font-size: 14px;
-            color: #f17085;
+            color: #ee566f;
         }
         .buttonss{
            background-color: #ff9cad; 
@@ -57,36 +57,56 @@
         .buttonss:active {
            transform: translateY(0); 
         }
+        input, select, textarea{
+            width: 100%;
+            padding:8px;
+            margin-top: 5px;
+            border: 1px solid rgb(255, 163, 163);
+            border-radius: 4px;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+        input:focus, select:focus, textarea:focus{
+            border-color:#70f1a6;
+            background-color:#fff8f8;
+            box-shadow: 0 0 5px #70f1a6;
+
+        }
+        .empty-field{
+            border: 2px solid #ff2389 !important;
+            background-color:#fff0f0 !important;
+
+        }
         </style>
     </head>
     <body style="background-color: #ffbcc9;">
 
         <div class="form-container">  
         <form id="form" action="submit" method="post"
-            onsubmit="return confirmSubmission()"
-            onreset="return confirmReset()"
+            onsubmit="return submission()"
+            onreset="return resetAll()"
         >
 
             <fieldset>
                 <legend>Your Personal Information</legend><br/>
                 <label> Student ID:
-                    <input type="number" name="studentID" required onblur="validateField(this)">
+                    <input type="number" name="studentID"  required onblur="validateField(this)" onfocus="this.classlist.remove(`empty-field`)">
                 </label></br>
                 <label>Full Name:
-                    <input type="text" name="fullName"  required onblur="validateField(this)">
+                    <input type="text" name="fullName" required onblur="validateField(this)" onfocus="this.classlist.remove(`empty-field`)">
                 </label></br>
-                <label>Birthday (mm/dd/yyyy)
-                    <input type="text" name="fullName"  required onblur="validateField(this)">
+                <label>Birthday (mm/dd/yyyy):
+                    <input type="text" name="fullName"  required onblur="validateField(this)" onfocus="this.classlist.remove(`empty-field`)">
                 </label></br>
-                <label>Email Address
-                    <input type="text" name="fullName"  required onblur="validateField(this)">
+                <label>Email Address:
+                    <input type="text" name="fullName"  required onblur="validateField(this)" onfocus="this.classlist.remove(`empty-field`)">
                 </label></br>
                 </fieldset>
 
                 <fieldset>
                     <legend>Club Membership Details</legend>
                 <label>Mobile Phone:
-                    <input type="text" name="mobile"  required onblur="validateField(this)">
+                    <input type="text" name="mobile"  required onblur="validateField(this)" onfocus="this.classlist.remove(`empty-field`)">
                 </label></br>
                 <label>Grade Level
                     <select name="gradeLevel" required>
@@ -115,7 +135,7 @@
                     </select>
                 </label></br>
                 <label>Why Do You Want To Join?
-                    <textarea name="join" rows="4" required onblur="validateField(this)"></textarea>
+                    <textarea name="join" rows="4" required onblur="validateField(this)" onfocus="this.classlist.remove(`empty-field`)"></textarea>
                 </label></br>
 
             </fieldset>
@@ -126,6 +146,7 @@
         </form>
       </div>
         <script>
+              
             function submission(){
                 return confirm("Are you sure you want to submit this form already?")
             }
