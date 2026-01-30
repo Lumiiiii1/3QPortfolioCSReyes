@@ -83,7 +83,7 @@
     <body style="background-color: #ffbcc9;">
 
         <div class="form-container">  
-        <form id="form" action="submit" method="post"
+        <form id="form" method="post"
             onsubmit="return submission()"
             onreset="return resetAll()"
         >
@@ -97,10 +97,10 @@
                     <input type="text" name="fullName" required onblur="validateField(this)" onfocus="this.classlist.remove(`empty-field`)">
                 </label></br>
                 <label>Birthday (mm/dd/yyyy):
-                    <input type="text" name="fullName"  required onblur="validateField(this)" onfocus="this.classlist.remove(`empty-field`)">
+                    <input type="text" name="birthday"  required onblur="validateField(this)" onfocus="this.classlist.remove(`empty-field`)">
                 </label></br>
                 <label>Email Address:
-                    <input type="text" name="fullName"  required onblur="validateField(this)" onfocus="this.classlist.remove(`empty-field`)">
+                    <input type="text" name="emAdd"  required onblur="validateField(this)" onfocus="this.classlist.remove(`empty-field`)">
                 </label></br>
                 </fieldset>
 
@@ -162,6 +162,57 @@
                     element.classList.remove("empty-field");
                 }
             }
+           function handleFormSubmit(event) {
+             event.preventDefault();
+    const studentID = document.getElementById('studentID').value;
+    const fullName = document.getElementById('fullName').value;
+    const birthday = document.getElementById('birthday').value;
+    const emAdd = document.getElementById('emAdd').value;
+    const mobile = document.getElementById('mobile').value;
+    const gradeLevel = document.getElementById('gradeLevel').value;
+    const membership = document.getElementById('membership').value;
+    const choice = document.getElementById('choice').value;
+    const join = document.getElementById('join').value;
+
+    // Create an object to store the data
+    const dataaaa = {
+        studentID: studentID,
+        fullName: fullName,
+        birthday: birthday,
+        emAdd: emAdd,
+        mobile: mobile,
+        gradeLevel: gradeLevel,
+        membership: membership,
+        choice: choice,
+        join: join,
+        signupDate: new Date().toISOString()
+    };
+    const userDataJSON = JSON.stringify(dataaaa);
+
+    localStorage.setItem('signupData', userDataJSON);
+
+    document.getElementById('message').textContent = 'Sign-up data saved to local storage!';
+}
+
+// Add an event listener to the form
+document.getElementById('signupForm').addEventListener('submit', handleFormSubmit);
+
+// Optional: How to retrieve the data later
+function retrieveData() {
+    const savedData = localStorage.getItem('signupData');
+    if (savedData) {
+        const userData = JSON.parse(savedData);
+        console.log('Retrieved Student ID:', userData.studentID);
+        console.log('Retrieved Name:', userData.fullName);
+        console.log('Retrieved Birthday:', userData.birthday);
+        console.log('Retrieved Email:', userData.emAdd);
+        console.log('Retrieved Mobile Number:', userData.mobile);
+        console.log('Retrieved Grade Level:', userData.gradeLevel);
+        console.log('Retrieved Dorm Status:', userData.membership);
+        console.log('Retrieved Preferred Club:', userData.choice);
+        console.log('Retrieved Reasoning:', userData.join);
+    }
+}
         </script>
     </body>
 </html>
