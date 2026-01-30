@@ -83,7 +83,7 @@
     <body style="background-color: #ffbcc9;">
 
         <div class="form-container">  
-        <form id="form" method="post"
+        <form id="form" action="viewSignUps.html" method="post"
             onsubmit="return submission()"
             onreset="return resetAll()"
         >
@@ -162,8 +162,7 @@
                     element.classList.remove("empty-field");
                 }
             }
-           function handleFormSubmit(event) {
-             event.preventDefault();
+           function formSubmit(){
     const studentID = document.getElementById('studentID').value;
     const fullName = document.getElementById('fullName').value;
     const birthday = document.getElementById('birthday').value;
@@ -174,7 +173,6 @@
     const choice = document.getElementById('choice').value;
     const join = document.getElementById('join').value;
 
-    // Create an object to store the data
     const dataaaa = {
         studentID: studentID,
         fullName: fullName,
@@ -190,29 +188,8 @@
     const userDataJSON = JSON.stringify(dataaaa);
 
     localStorage.setItem('signupData', userDataJSON);
-
-    document.getElementById('message').textContent = 'Sign-up data saved to local storage!';
-}
-
-// Add an event listener to the form
-document.getElementById('signupForm').addEventListener('submit', handleFormSubmit);
-
-// Optional: How to retrieve the data later
-function retrieveData() {
-    const savedData = localStorage.getItem('signupData');
-    if (savedData) {
-        const userData = JSON.parse(savedData);
-        console.log('Retrieved Student ID:', userData.studentID);
-        console.log('Retrieved Name:', userData.fullName);
-        console.log('Retrieved Birthday:', userData.birthday);
-        console.log('Retrieved Email:', userData.emAdd);
-        console.log('Retrieved Mobile Number:', userData.mobile);
-        console.log('Retrieved Grade Level:', userData.gradeLevel);
-        console.log('Retrieved Dorm Status:', userData.membership);
-        console.log('Retrieved Preferred Club:', userData.choice);
-        console.log('Retrieved Reasoning:', userData.join);
-    }
-}
-        </script>
+    window.location.href = 'viewSignUps.html'
+}   
+</script>
     </body>
 </html>

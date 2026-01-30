@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Up Data</title>
+</head>
+<body>
+    <h1>Submitted Information</h1>
+    <p><strong>Student ID:</strong> <span id="displayStudentID"></span></p>
+    <p><strong>Full Name:</strong> <span id="displayFullName"></span></p>
+    <p><strong>Birthday:</strong> <span id="displayBirthday"></span></p>
+    <p><strong>Email:</strong> <span id="displayeEmAdd"></span></p>
+    <p><strong>Mobile Number:</strong> <span id="displayMobile"></span></p>
+    <p><strong>Grade Level:</strong> <span id="displayGradeLevel"></span></p>
+    <p><strong>Dormer Status:</strong> <span id="displayMembership"></span></p>
+    <p><strong>Club Choice:</strong> <span id="displayChoice"></span></p>
+    <p><strong>Reasoning</strong> <span id="displayJoin"></span></p>
+
+    <script>
+        // Get the data from localStorage
+        const storedData = localStorage.getItem('signupData');
+
+        if (storedData) {
+            // Parse the JSON string back into a JavaScript object
+            const userData = JSON.parse(storedData);
+
+            // Display the data in the HTML elements
+            document.getElementById('displayStudentID').textContent = userData.studentID;
+            document.getElementById('displayFullName').textContent = userData.fullName;
+            document.getElementById('displayBirthday').textContent = userData.birthday;
+            document.getElementById('displayeEmAdd').textContent = userData.emAdd;
+            document.getElementById('displayMobile').textContent = userData.mobile;
+            document.getElementById('displayGradeLevel').textContent = userData.gradeLevel;
+            document.getElementById('displayMembership').textContent = userData.membership;
+            document.getElementById('displayChoice').textContent = userData.choice;
+            document.getElementById('displayJoin').textContent = userData.join;
+        } else {
+            document.body.innerHTML = '<p>No sign-up data found.</p>';
+        }
+    </script>
+</body>
+</html>
