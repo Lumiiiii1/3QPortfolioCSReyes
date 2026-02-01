@@ -162,34 +162,36 @@
                     element.classList.remove("empty-field");
                 }
             }
-           function formSubmit(){
-    const studentID = document.getElementById('studentID').value;
-    const fullName = document.getElementById('fullName').value;
-    const birthday = document.getElementById('birthday').value;
-    const emAdd = document.getElementById('emAdd').value;
-    const mobile = document.getElementById('mobile').value;
-    const gradeLevel = document.getElementById('gradeLevel').value;
-    const membership = document.getElementById('membership').value;
-    const choice = document.getElementById('choice').value;
-    const join = document.getElementById('join').value;
+            document.getElementById('form').addEventListener('submit', function(event) {
+                event.preventDefault(); 
 
-    const dataaaa = {
-        studentID: studentID,
-        fullName: fullName,
-        birthday: birthday,
-        emAdd: emAdd,
-        mobile: mobile,
-        gradeLevel: gradeLevel,
-        membership: membership,
-        choice: choice,
-        join: join,
-        signupDate: new Date().toISOString()
-    };
-    const userDataJSON = JSON.stringify(dataaaa);
+                 const studentID = document.getElementById('studentID').value;
+                 const fullName = document.getElementById('fullName').value;
+                 const birthday = document.getElementById('birthday').value;
+                 const emAdd = document.getElementById('emAdd').value;
+                 const mobile = document.getElementById('mobile').value;
+                 const gradeLevel = document.getElementById('gradeLevel').value;
+                 const membership = document.getElementById('membership').value;
+                 const choice = document.getElementById('choice').value;
+                 const join = document.getElementById('join').value;
 
-    localStorage.setItem('signupData', userDataJSON);
-    window.location.href = 'viewSignUps.html'
-}   
+                  const userData = {
+                     studentID: studentID,
+                     fullName: fullName,
+                     birthday: birthday,
+                     emAdd: emAdd,
+                     mobile: mobile,
+                     gradeLevel: gradeLevel,
+                     membership: membership,
+                     choice: choice,
+                     join: join
+                    };
+                   
+                 const userDataJSON = JSON.stringify(userData);
+                 localStorage.setItem('signupData', userDataJSON);
+
+                  window.location.href = 'viewSignUps.html';
+    });
 </script>
     </body>
 </html>
