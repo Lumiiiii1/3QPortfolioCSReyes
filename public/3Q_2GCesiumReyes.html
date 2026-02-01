@@ -83,7 +83,7 @@
     <body style="background-color: #ffbcc9;">
 
         <div class="form-container">  
-        <form id="form" action="viewSignUps.html" method="post"
+        <form id="form" method="post"
             onsubmit="return submission()"
             onreset="return resetAll()"
         >
@@ -162,36 +162,43 @@
                     element.classList.remove("empty-field");
                 }
             }
-            document.getElementById('form').addEventListener('submit', function(event) {
-                event.preventDefault(); 
+              // Wait until the DOM is fully loaded
+    document.addEventListener('DOMContentLoaded'), () => {
+    // Get references to the form and message elements
+    const form = document.getElementById('form');
 
-                 const studentID = document.getElementById('studentID').value;
-                 const fullName = document.getElementById('fullName').value;
-                 const birthday = document.getElementById('birthday').value;
-                 const emAdd = document.getElementById('emAdd').value;
-                 const mobile = document.getElementById('mobile').value;
-                 const gradeLevel = document.getElementById('gradeLevel').value;
-                 const membership = document.getElementById('membership').value;
-                 const choice = document.getElementById('choice').value;
-                 const join = document.getElementById('join').value;
+    // Add an event listener for the form's 'submit' event
+    form.addEventListener('submit', (event) => {
+    
+        event.preventDefault();
 
-                  const userData = {
-                     studentID: studentID,
-                     fullName: fullName,
-                     birthday: birthday,
-                     emAdd: emAdd,
-                     mobile: mobile,
-                     gradeLevel: gradeLevel,
-                     membership: membership,
-                     choice: choice,
-                     join: join
-                    };
-                   
-                 const userDataJSON = JSON.stringify(userData);
-                 localStorage.setItem('signupData', userDataJSON);
+        const studentID = document.getElementById('studentID').value;
+        const fullName = document.getElementById('fullName').value;
+        const birthday = document.getElementById('birthday').value; 
+        const emAdd = document.getElementById('emAdd').value; 
+        const mobile = document.getElementById('mobile').value; 
+        const gradeLevel = document.getElementById('gradeLevel').value; 
+        const membership = document.getElementById('membership').value; 
+        const choice = document.getElementById('choice').value; 
+        const join = document.getElementById('join').value; 
+    
+        const userData = {
+            studentID: studentID,
+            fullName: fullName,
+            birthday: birthday,
+            emAdd: emAdd,
+            mobile: mobile,
+            gradeLevel: gradeLevel,
+            membership: membership,
+            choice: choice,
+            join: join
+        };
 
-                  window.location.href = 'viewSignUps.html';
-    });
+        localStorage.setItem('signedUpUser', JSON.stringify(userData));
+        window.location.href = 'viewSignUps.html';
+});
+    }
+
 </script>
     </body>
 </html>

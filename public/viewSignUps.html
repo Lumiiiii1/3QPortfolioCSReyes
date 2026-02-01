@@ -17,26 +17,42 @@
     <p><strong>Reasoning</strong> <span id="displayJoin"></span></p>
 
     <script>
-        // Get the data from localStorage
-        const storedData = localStorage.getItem('signupData');
 
-        if (storedData) {
-            // Parse the JSON string back into a JavaScript object
-            const userData = JSON.parse(storedData);
+   const storedUser = localStorage.getItem('signedUpUser');
 
-            // Display the data in the HTML elements
-            document.getElementById('displayStudentID').textContent = userData.studentID;
-            document.getElementById('displayFullName').textContent = userData.fullName;
-            document.getElementById('displayBirthday').textContent = userData.birthday;
-            document.getElementById('displayeEmAdd').textContent = userData.emAdd;
-            document.getElementById('displayMobile').textContent = userData.mobile;
-            document.getElementById('displayGradeLevel').textContent = userData.gradeLevel;
-            document.getElementById('displayMembership').textContent = userData.membership;
-            document.getElementById('displayChoice').textContent = userData.choice;
-            document.getElementById('displayJoin').textContent = userData.join;
-        } else {
-            document.body.innerHTML = '<p>No sign-up data found.</p>';
-        }
+
+if (storedUser) {
+   
+    const user = JSON.parse(storedUser);
+
+  
+    document.getElementById('displayStudentID').textContent = user.studentID;
+    document.getElementById('displayFullName').textContent = user.fullName;
+    document.getElementById('displayBirthday').textContent = user.birthday;
+    document.getElementById('displayEmAdd').textContent = user.emAdd;
+    document.getElementById('displayMobile').textContent = user.mobile;
+    document.getElementById('displayGradeLevel').textContent = user.gradeLevel;
+    document.getElementById('displayMembership').textContent = user.membership;
+    document.getElementById('displayChoice').textContent = user.choice;
+    document.getElementById('displayJoin').textContent = user.join;
+
+
+
+
+} else {
+    
+   document.getElementById('displayStudentID').textContent = user.studentID = 'N/A';
+    document.getElementById('displayFullName').textContent = user.fullName = 'N/A';
+    document.getElementById('displayBirthday').textContent = user.birthday = 'N/A';
+    document.getElementById('displayEmAdd').textContent = user.emAdd = 'N/A';
+    document.getElementById('displayMobile').textContent = user.mobile = 'N/A';
+    document.getElementById('displayGradeLevel').textContent = user.gradeLevel = 'N/A';
+    document.getElementById('displayMembership').textContent = user.membership = 'N/A';
+    document.getElementById('displayChoice').textContent = user.choice = 'N/A';
+    document.getElementById('displayJoin').textContent = user.join = 'N/A';
+    alert('No sign up information found.');
+}
+
     </script>
 </body>
 </html>
