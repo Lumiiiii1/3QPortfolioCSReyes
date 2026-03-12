@@ -31,6 +31,57 @@
   background-color: #fa89be;
   color: white;
 }
+.topnav {
+  display: flex;         
+  background-color: #F8A8D1;
+  border-radius: 15px;
+  overflow: hidden;
+  align-items: center;
+}
+
+.topnav a, .dropdown {
+  float: none;        
+}
+
+.dropdown {
+  position: relative;   
+}
+
+.dropdown-btn {
+  background-color: #F8A8D1;
+  border: none;
+  color: #BB6150;
+  padding: 14px 16px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.dropdown-content {
+  max-height: 0;               
+  overflow: hidden;         
+  position: absolute;
+  background-color: #ffe0f0;
+  min-width: 160px;
+  z-index: 1;
+  margin-top: 2px;
+  border-radius: 8px;
+  transition: max-height 0.3s ease-out; 
+  box-shadow: 0 4px 6px rgba(246, 218, 218, 0.25);
+}
+.dropdown-content.show {
+  max-height: 500px;         
+}
+.dropdown-content a {
+  display: block;
+  color: #BB6150;
+  padding: 8px 12px;
+  text-decoration: none;
+}
+
+.dropdown-content a:hover {
+  background-color: #fffcf0;
+  color: pink;
+}
 .nameidk {
 position: fixed;
 top: 0;
@@ -61,11 +112,30 @@ z-index: -1;
         </div>
         <img src="https://64.media.tumblr.com/2ca442593e7ee02fb3dcacb592f6db4d/0488966c5593f558-12/s640x960/f0feb7441e96a948b4797fdd57c8180e68995c8b.jpg" alt="Anime Header" style="width:100%">
         <div class="topnav">
-        <a class="active" href="https://www.youtube.com/watch?v=e5p_jQJwBQw&list=RDe5p_jQJwBQw&start_radio=1">Classical Music</a>
-        <a href="https://lumiiiii1.github.io/2QPortfolioCSReyes/public/2Q2GCesiumReyes.html">2nd Graded Exercise</a>
-        <a href="./public/Q21NGCesiumReyes.html">1st Nongraded Exercise</a>
-        <a href="./public/3Q_2GCesiumReyes.html">3Q 2nd Graded</a>
-        </div>
+  <button class="dropdown-btn">Quarter 1 ▾</button>
+  <div class="dropdown-content">
+    <a href="./public/Q11Exercise.html">1st Exercise</a>
+    <a href="./public/Q12Exercise.html">2nd Exercise</a>
+  </div>
+
+  <button class="dropdown-btn">Quarter 2 ▾</button>
+  <div class="dropdown-content">
+    <a href="./public/Q21NGCesiumReyes.html">1st Nongraded</a>
+    <a href="https://lumiiiii1.github.io/2QPortfolioCSReyes/public/2Q2GCesiumReyes.html">2nd Graded</a>
+  </div>
+
+  <button class="dropdown-btn">Quarter 3 ▾</button>
+  <div class="dropdown-content">
+    <a href="./public/3Q_2GCesiumReyes.html">2nd Graded</a>
+  </div>
+
+  <button class="dropdown-btn">Quarter 4 ▾</button>
+  <div class="dropdown-content">
+    <a href="./public/q41gCesiumReyes.html">Movie Rating</a>
+  </div>
+
+  <a href="https://www.youtube.com/watch?v=e5p_jQJwBQw&list=RDe5p_jQJwBQw&start_radio=1">Classical Music</a>
+</div>
         <img src = "https://64.media.tumblr.com/3b1998d2a6a001f0352ee62b9622accb/5393b05386ed0a14-2c/s1280x1920/5a0ab94acc54a7377722cd26f5202aa2c98cff16.gifv"style = "width:100%" alt = "fluttershy header">
         <h1 style ="text-align: center; color: #BB6150; text-decoration: none; font-family: verdana;">Haiiiii ^^</h1>
         <h1 style ="text-align: center; color: #BB6150; text-decoration: none; font-family: verdana;">Lumi's Website!</h1>
@@ -83,4 +153,23 @@ z-index: -1;
          </div>
          <img src="https://64.media.tumblr.com/4d1252bb892fe96abaaacf9625a29e7a/4af7bebb5f2971a8-83/s250x400/a510bc674678cb2d72499c9e203e2e0770f12238.gifv" alt="pink" style="width:100%">
     </body>
+    <script>
+   const dropdowns = document.querySelectorAll('.dropdown-btn');
+
+dropdowns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const content = btn.nextElementSibling;
+
+    // Close all other dropdowns
+    document.querySelectorAll('.dropdown-content').forEach(dc => {
+      if (dc !== content) {
+        dc.classList.remove('show');
+      }
+    });
+
+    // Toggle the clicked dropdown
+    content.classList.toggle('show');
+  });
+});
+    </script>
 </html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Up Data</title>
+</head>
+<body>
+    <h1>Submitted Information</h1>
+    <p><strong>Student ID:</strong> <span id="displayStudentID"></span></p>
+    <p><strong>Full Name:</strong> <span id="displayFullName"></span></p>
+    <p><strong>Birthday:</strong> <span id="displayBirthday"></span></p>
+    <p><strong>Email:</strong> <span id="displayeEmAdd"></span></p>
+    <p><strong>Mobile Number:</strong> <span id="displayMobile"></span></p>
+    <p><strong>Grade Level:</strong> <span id="displayGradeLevel"></span></p>
+    <p><strong>Dormer Status:</strong> <span id="displayMembership"></span></p>
+    <p><strong>Club Choice:</strong> <span id="displayChoice"></span></p>
+    <p><strong>Reasoning</strong> <span id="displayJoin"></span></p>
+
+    <script>
+
+   const storedUser = localStorage.getItem('signedUpUser');
+
+
+if (storedUser) {
+   
+    const user = JSON.parse(storedUser);
+
+  
+    document.getElementById('displayStudentID').textContent = user.studentID;
+    document.getElementById('displayFullName').textContent = user.fullName;
+    document.getElementById('displayBirthday').textContent = user.birthday;
+    document.getElementById('displayEmAdd').textContent = user.emAdd;
+    document.getElementById('displayMobile').textContent = user.mobile;
+    document.getElementById('displayGradeLevel').textContent = user.gradeLevel;
+    document.getElementById('displayMembership').textContent = user.membership;
+    document.getElementById('displayChoice').textContent = user.choice;
+    document.getElementById('displayJoin').textContent = user.join;
+
+
+
+
+} else {
+    
+   document.getElementById('displayStudentID').textContent = user.studentID = 'N/A';
+    document.getElementById('displayFullName').textContent = user.fullName = 'N/A';
+    document.getElementById('displayBirthday').textContent = user.birthday = 'N/A';
+    document.getElementById('displayEmAdd').textContent = user.emAdd = 'N/A';
+    document.getElementById('displayMobile').textContent = user.mobile = 'N/A';
+    document.getElementById('displayGradeLevel').textContent = user.gradeLevel = 'N/A';
+    document.getElementById('displayMembership').textContent = user.membership = 'N/A';
+    document.getElementById('displayChoice').textContent = user.choice = 'N/A';
+    document.getElementById('displayJoin').textContent = user.join = 'N/A';
+    alert('No sign up information found.');
+}
+
+    </script>
+</body>
+</html>
