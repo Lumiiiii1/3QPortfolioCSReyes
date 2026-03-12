@@ -240,7 +240,7 @@ function updateAverage() {
 }
 //----- now add the movies to local storage
 function addMovie() { 
-    const title = document.getElementById("title").value;
+    const title = document.getElementById("title").value.trim();
     const year = document.getElementById("year").value;
     const genre = document.getElementById("genre").value;
 
@@ -251,19 +251,21 @@ function addMovie() {
 
     let movies = JSON.parse(localStorage.getItem("movies")) || [];
 
-    // check if movie already exists
-    let existingMovie = movies.find(m => m.title.toLowerCase() === title.toLowerCase());
+    // find movie with same title AND year
+    let existingMovie = movies.find(movie => 
+        movie.title.toLowerCase() === title.toLowerCase() && movie.year == year
+    );
 
     if (existingMovie) {
         // add new rating to existing movie
         existingMovie.ratings.push(selectedRating);
     } else {
-        // create new movie with ratings array
+
         const movie = {
             title: title,
             year: year,
             genre: genre,
-            ratings: [selectedRating]
+            ratings: [selectedRating] // store ratings as an array
         };
 
         movies.push(movie);
@@ -283,24 +285,23 @@ function displayMovies() {
 
     movies.forEach(movie => {
 
-        // calculate average rating
-        let sum = 0;
-        movie.ratings.forEach(r => sum += r);
+        // calculate average
+        let sum = movie.ratings.reduce((a, b) => a + b, 0);
         let average = sum / movie.ratings.length;
 
         const div = document.createElement("div");
         div.className = "movie-item";
 
-        // show average stars
+        // create star display from average
         let starsDisplay = "";
         for (let i = 0; i < Math.round(average); i++) {
             starsDisplay += "★";
         }
 
         div.innerHTML = `
-            ${movie.title} (${movie.year}) - ${movie.genre}<br>
+            <strong>${movie.title}</strong> (${movie.year}) - ${movie.genre}<br>
             Average Rating: <span class="rating-stars">${starsDisplay}</span>
-            (${average.toFixed(2)} from ${movie.ratings.length} ratings)
+            (${average.toFixed(2)} / 5 from ${movie.ratings.length} ratings)
         `;
 
         movieList.appendChild(div);
