@@ -2,7 +2,7 @@
 <html>
 <head>
         <meta charset="UTF-8">
-        <meta viewport content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Movie Rating G1 & G2</title>
 
     <style>
@@ -277,10 +277,10 @@ function displayMovies() {
     movies.forEach(movie => {
 
         // calculate average
-        let ratings = movie.ratings || [];
-        let sum = ratings.reduce((a, b) => a + b, 0); 
-        let average = ratings.length ? sum / ratings.length : 0;
-
+        let movieRatings = movie.ratings || [];
+        let sum = movieRatings.reduce((a, b) => a + b, 0);
+        let average = movieRatings.length ? sum / movieRatings.length : 0;
+        
         const div = document.createElement("div");
         div.className = "movie-item";
 
@@ -304,7 +304,6 @@ function clearForm() {
     document.getElementById("title").value = "";
     document.getElementById("year").value = "";
     selectedRating = 0;
-    ratings = [];
     updateStars(0);
 }
 
