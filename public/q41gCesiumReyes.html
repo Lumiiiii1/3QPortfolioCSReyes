@@ -1,18 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Q4 G1 - Create & Read</title>
+        <meta charset="UTF-8">
+        <meta viewport content="width=device-width, initial-scale=1.0">
+        <title>Movie Rating G1 & G2</title>
 
     <style>
         body {
-            font-family: 'Segoe UI', 'Frutiger', Tahoma, sans-serif;
-            background: linear-gradient(180deg, #51bff2 0%, #ffffff 50%, #76d063 100%);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
+    font-family: "Lucida Console", "Courier New", monospace;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+
+   
+    background-image: url("https://i.pinimg.com/1200x/d6/f7/50/d6f750bf0357fa9d7dce6868d66aa551.jpg");
+    background-size: cover;    
+    background-position: center; 
+    background-repeat: no-repeat;
+    animation: backgroundZoom 30s infinite alternate ease-in-out;
+              }
+
+    /* cool animation for the background */
+            @keyframes backgroundZoom {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.05); }
+             }
 
         .container {
             width: 650px;
@@ -28,7 +42,7 @@
 
         h2 {
             text-align: center;
-            color: #003366;
+            color: #ff7591;
             margin-bottom: 30px;
             font-weight: 500;
         }
@@ -39,7 +53,7 @@
 
         label {
             font-weight: 300;
-            color: #003366;
+            color: #ff7591;
             display: block;
             margin-bottom: 6px;
         }
@@ -49,7 +63,7 @@
             width: 100%;
             padding: 12px;
             border-radius: 8px;
-            border: 1px solid #cce0ff;
+            border: 1px solid #fecaa1;
             font-size: 14px;
             box-sizing: border-box;
             transition: 0.2s;
@@ -57,8 +71,8 @@
 
         input:focus, select:focus {
             outline: none;
-            border-color: #3399ff;
-            box-shadow: 0 0 10px rgba(51,153,255,0.6);
+            border-color: #fecaa1;
+            box-shadow: 0 0 10px #efaa76;
         }
 
         .stars {
@@ -81,18 +95,18 @@
             display: block;
             padding: 16px;
             text-decoration: none;
-            color: white;
+            color: #ff7591;
             width: 100%;
             font-weight: 300;
             font-size: 1rem;
             border-radius: 12px;
             position: relative;
-            background: linear-gradient(to bottom, #74c1ff 0%, #3a92e8 50%, #1e70c9 51%, #33a2ff 100%);
-            border: 1px solid #005a9e;
+            background: linear-gradient(to bottom, #fee9da 0%, #ffe8b1 50%, #fec89d 51%, #fedae0 100%);
+            border: 1px solid #ff7591;
             box-shadow: 
-                0 4px 12px rgba(0,0,0,0.2), 
-                inset 0 1px 0 rgba(255,255,255,0.8),
-                inset 0 -1px 0 rgba(0,0,0,0.2);
+                0 4px 12px #f9dae0, 
+                inset 0 1px 0 #fee9da,
+                inset 0 -1px 0 #ff7591;
             transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             overflow: hidden;
         }
@@ -100,7 +114,7 @@
         button:hover {
             transform: scale(1.03) translateY(-3px);
             filter: saturate(1.3) brightness(1.1);
-            box-shadow: 0 10px 20px rgba(0,120,215,0.4);
+            box-shadow: 0 10px 20px #ffe8b1;
         }
 
         .movie-list-title {
@@ -112,7 +126,7 @@
             padding: 15px;
             border-radius: 12px;
             background: linear-gradient(to bottom right, #ffffff, #e6f3ff);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 15px #ff7591;
             font-weight: 200;
         }
 
@@ -121,33 +135,9 @@
             font-size: 18px;
             text-shadow: 0 0 5px rgba(255,215,0,0.6);
         }
-        
-        /* Floating Interactive Bubbles */
-        .bubble {
-            position: absolute;
-            background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.6), rgba(255,255,255,0.1));
-            border: 1px solid rgba(255,255,255,0.4);
-            border-radius: 50%;
-            pointer-events: none;
-            box-shadow: inset -5px -5px 15px rgba(0,0,0,0.05), 0 5px 15px rgba(0,0,0,0.1);
-            animation: rise var(--d) infinite ease-in;
-            z-index: 1;
-        }
-
-        @keyframes rise {
-            0% { transform: translateY(110vh) scale(0.5); opacity: 0; }
-            20% { opacity: 0.7; }
-            100% { transform: translateY(-20vh) scale(1.2); opacity: 0; }
-        }
     </style>
 </head>
 <body>
-    <div class="aurora"></div>
-
-    <div class="bubble" style="--d: 15s; width: 100px; height: 100px; left: 5%;"></div>
-    <div class="bubble" style="--d: 12s; width: 50px; height: 50px; left: 80%; animation-delay: 2s;"></div>
-    <div class="bubble" style="--d: 18s; width: 80px; height: 80px; left: 40%; animation-delay: 5s;"></div>
-    <div class="bubble" style="--d: 20s; width: 120px; height: 120px; left: 15%; animation-delay: 1s;"></div>
 
 <div class="container">
 
@@ -196,6 +186,7 @@
 </div>
 
 <script>
+//------stores all the stars
 let selectedRating = 0;
 let ratings = []; // store all ratings in an array
 
