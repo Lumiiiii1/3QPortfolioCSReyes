@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<head>
+<style>
+    .stars {
+        margin-top:5px;
+    }
+
+    .stars span {
+        font-size:28x;
+        cursor:pointer;
+        color:antiquewhite;
+        transition:0.2s;
+    }
+
+    .stars span.active{
+        color:gold;
+
+    }
+</style>
+</head>
+<body>
+ <div class="container">
+    <h1>Add a Movie</h1>
+
+    <div class="form=group">
+        <label>Movie Title:</label>
+        <input type="text" id="movieT">
+    </div>
+
+    <div class="form-group">
+        <label>Year:</label>
+        <input type="text" id="movieY">
+    </div>
+
+    <div class="form-group">
+        <label>Genre:</label>
+        <select id="movieG">
+            <option>Action</option>
+            <option>Drama</option>
+            <option>Horror</option>
+            <option>Comedy</option>
+            <option>Family</option>
+            <option>Romance</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label>Rating:</label>
+        <div class ="stars" id="starContainer">
+            <div class="stars">
+                <span class="star" data-value="1">★</span>
+                <span class="star" data-value="2">★</span>
+                <span class="star" data-value="3">★</span>
+                <span class="star" data-value="4">★</span>
+                <span class="star" data-value="5">★</span>
+                </div>
+    </div>
+ <button onclick="addMovies()">Add Movie</button>
+ </div>
+  <h2 class="movie-list-title">Movie LIst</h2>
+  <div id="rate"></div>
+    <script>
+        let selectedRating=0;
+        const stars=document.querySelectorAll("#starContainer span");
+
+        stars.forEach(star=>{
+            star.addEventListener("click", function(){
+                selectedRating=this.getAttribute("data-value");
+                updateStars(selectedRating);
+            });
+        });
+         function updateStars(rating){
+            stars.forEach(star=>{
+                if(star.getAttribute("data-value")<=rating){
+                    star.classLIst.add("active");
+                }
+            });
+         }
+
+        
+        function addMovies(){
+            const movieT=document.getElementById("movieT").value;
+            const movieY=document.getElementById("movieY").value;
+            const movieG=document.getElementById("movieG").value;
+
+            if(movieT === "" || movieY === "" || selectedRating == 0){
+                alert("Please Complete All Fields.");
+                return;
+            }
+
+            const mov={
+                movieT: movieT,
+                movieY: movieY,
+                movieG: movieG,
+                rating: selectedRating
+            };
+
+            let movs=JSON.parse(localStorage.getItem("movies")) || [];
+            movs.push(mov);
+
+            localStorage.setItem("movs", JSON.stringify(movs));
+
+            displayMovies();
+            clearForm();
+        }
+
+        function displayMovies(){
+            const rate = document.getElementById("rate");
+            rate.innerHTML="";
+
+            movs.forEach(mov=>{
+                const div = document.createElement("div");
+                div.className="movie-item";
+
+                let starsDisplay="";
+                for (let i=0; i<mov.rating;i++){
+                    starsDisplay += "★";
+                }
+                div.innerHTML +=`
+                ${mov.movieT} (${mov.movieY}) - ${mov.movieG}
+                Rating: <span class="rating-stars"> ${starsDisplay}</span>
+                `;
+                rate.appendChild(div);
+            })
+
+        }
+
+        function clearForm(){
+            document.getElementbyId("movieT").value="";
+            document.getElementById("movieY").value="";
+            selectedRating=0;
+            updateStars(0);
+        }
+
+        displayMovies();
+    </script>
+   
+</html>
