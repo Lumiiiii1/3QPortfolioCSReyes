@@ -291,10 +291,12 @@ function displayMovies() {
         }
 
         div.innerHTML = `
-            <strong>${movie.title}</strong> (${movie.year}) - ${movie.genre}<br>
-            Average Rating: <span class="rating-stars">${starsDisplay}</span>
-            (${average.toFixed(2)} / 5 from ${movie.ratings.length} ratings)
-        `;
+          <strong>${movie.title}</strong> (${movie.year}) - ${movie.genre}<br>
+          Average Rating: <span class="rating-stars">${starsDisplay}</span>
+          (${average.toFixed(2)} / 5 from ${movie.ratings.length} ratings)
+         <br><br>
+         <button onclick="deleteMovie('${movie.title}', '${movie.year}')">Delete</button>
+`;
 
         movieList.appendChild(div);
     });
@@ -308,6 +310,21 @@ function clearForm() {
 }
 
 displayMovies();
+// adds a delete button so that you can delete the movies
+function deleteMovie(title, year) {
+
+    if (!confirm("Are you sure you want to delete this movie?")) return; //gives a popup and asks if the user wants to delete their movie
+
+    let movies = JSON.parse(localStorage.getItem("movies")) || [];
+
+    movies = movies.filter(movie => 
+        !(movie.title === title && movie.year == year)
+    );
+
+    localStorage.setItem("movies", JSON.stringify(movies));
+
+    displayMovies();
+}
 </script>
 
 </body>
