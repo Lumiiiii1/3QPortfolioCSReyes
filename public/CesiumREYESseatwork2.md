@@ -87,19 +87,27 @@
 - Give .content a z-index: 1.
 
 - Guided Question: Why does the notice appear on top of the content? What happens if you swap the z‑index values?
-**Notive appears on top of content because z-index actually controls how elements are stacked and overlapped within a webpage. Since notice's z-index is 2 and content's z-index is 1, the computer reads it as notice being "closer" to the user, therefore making it on top of content. If we were to swap the z-index values, content would be on top instead. However, z-index only works for elements that have some sort of positioning and are not static.**
+**Notice appears on top of content because z-index actually controls how elements are stacked and overlapped within a webpage. Since notice's z-index is 2 and content's z-index is 1, the computer reads it as notice being "closer" to the user, therefore making it on top of content. If we were to swap the z-index values, content would be on top instead. However, z-index only works for elements that have some sort of positioning and are not static.**
 
 - Challenge: 
     * What changes that you have to do on the code that will position .notice box on the top right corner of the .content box? Please write the code on paper as well (both html and css on the part of .notice and .content).
+    
+  
     * Try to change the position of .content to relative then to fixed. What do you observed each time?
+  
     * What do you observe on about the effect of z-index on .notice and .content boxes?
+    
 
 3. Please answer the following reflection questions (15 minutes)
 
     a. Could you summarize the differences between the CSS position values (static, relative, absolute, fixed)? 
+    **The main differences are their reference points. Static elements follow the normal document flow, moves with the page and is the default for all elements. Properties also have generally no effect on these. Relative's reference point is its normal position in the flow but it can be altered and changed with properties. Absolute is positioned in terms of the closest item ot position ancestor and is removed from the flow of the other elements. It also moves with the page like the other 3. Lastly, fixed is positioned in terms of the browser's viewport and is removed from the flow, but it doesn't move with the page and just stays put where you put it.**
 
     b. How does absolute positioning depend on its parent element?
+    **As said earlier, absolute positioning is positioned relative to its nearest positioned ancestor. This just means that the absolute child uses the parent's padding edges as the boundaries for its top,right,left and bottom coordinates. If there is a static element, it will ignore it and keep searching until it finds a positioned ancestor.**
 
     c. How do you differentiate sticky from fixed (you can research on sticky)?
+    **position:fixed always places an elements relative to the browser viewport and anchors it there so it just doesn't move with the page and stays put. However, position:sticky's reference point is its nearest scrolling ancestor or parent contained, so it essentially remains in its normal position and normal document flow until it hits a specified threshold and "sticks" to the parent container. It essentially becomes fixed within it so that content does not overlap.**
 
     d. If you were designing a webpage for a school event, how might you use positioning to highlight important information? Please give concrete examples.
+    **Firstly, I would probably use fixed positioning for something like a footer that contains imporant information like more info or social media so that people know where to find us and they know where to look if they want to learn more. I would use relative and absolute positioning for things like a main header at the top of the page so that people see it first things first, but they can still scroll through the webpage without being interrupted by it. Lastly, I'd use static for a more basic webpage design with minimal content because I don't have to position a lot of stuff and move them around too much.**
