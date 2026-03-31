@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <meta name="author" content="Seanna Reyes">
+  <meta name="description" content="testing and debugging">
+  <meta name="keywords" content="testing and debugging">
+  <title>CS3 </title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins:wght@300&family=Roboto&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+
+  <style>
+    tr:nth-child(1) ~ tr:nth-child(odd) {
+      background-color: lightgray;
+      color: black;
+    }
+    td, th {
+      padding: 10px;
+    }
+    table {
+      width: 90%;
+      margin: 0 auto;
+    }
+    caption {
+      font-size: 2em;
+      font-weight: bold;
+      padding: 10px;
+    }
+    
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <a href="index.html#start">Table</a>
+      <a href="index.html#input">Input</a>
+      <a href="index.html#output">Output</a>
+    </nav>
+    
+    <h1 style="padding: 30px">name/section 2026 </h1>
+  </header>
+
+  <section id="table">
+    <table> 
+      <caption> Error Logs - place errors found in the table below</caption>
+      <tr class="rColor">
+        <th> item# </th> 
+        <th> code line#<br/>CSS or JS </th> 
+        <th> Description</th>
+        <th> Correction Done</th>
+      </tr>
+      <tr>
+        <td> 1 </td> 
+        <td> JS Line #26 </td> 
+        <td> The function plotPoint is never closed</td>
+        <td> I just added a curly bracket so that the function would be closed properly.</td>
+      </tr>
+      <tr>
+        <td> 2 </td> 
+        <td> JS Line #7 </td> 
+        <td> No period between style and left</td>
+        <td> I added a period so it would become point.style.left because style is an object.</td>
+      </tr>
+      <tr>
+        <td> 3 </td> 
+        <td> JS Line #8 </td> 
+        <td> No period between style and bottom</td>
+        <td> Same with #2, style is an object so in order to declare it it needs to be point.style.bottom</td>
+      </tr>
+      <tr>
+        <td> 4 </td> 
+        <td> JS line #2</td> 
+        <td> The variables in the console.log are undefined and should be passed as parameters instead.</td>
+        <td> I removed the console.log and put the variables into the parameters for the function.</td>
+      </tr>
+      <tr>
+        <td> 5 </td> 
+        <td> CSS Line #50 </td> 
+        <td> the .point class does not include positioning, so style.left and style.bottom won't work</td>
+        <td> I added position:absolute to the class so that it'd have positioning.</td>
+      </tr>
+      <tr>
+        <td> 6 </td> 
+        <td> JS Lines #11, 14, 17, 20 and 23</td> 
+        <td> DOM Elements in1 and out1 are undefined.</td>
+        <td> I just defined the DOM elements beforehand</td>
+      </tr>
+      <tr>
+        <td> 7 </td> 
+        <td> JS Line #25</td> 
+        <td> The condition just assumes everything else is a border, which would be wrong.</td>
+        <td> Instead of putting it under the else statement, I made it the first statement that the else-if loop checks..</td>
+      </tr>
+      <tr>
+        <td> 8 </td> 
+        <td> JS Lines #11, 14, 17, 20 and 23</td> 
+        <td> It can only handle one point and it overwrites every time it loops.</td>
+        <td> So that you are able to see more than one point, I used += so that I could keep previous outputs.</td>
+      </tr>
+      <tr>
+        <td> 9 </td> 
+        <td> CSS Line #25</td> 
+        <td> Navigation is not in one line at the top/not organized</td>
+        <td> I just added display:flex to organize all of the nav stuff</td>
+      </tr>
+      <tr>
+        <td> 10 </td> 
+        <td> CSS Line #39</td> 
+        <td> nav a :hover only targets the children of a and not a itself.</td>
+        <td> I changed it to instead be nav a:hover.</td>
+      </tr>
+     
+    </table>
+    <hr>
+  </section>
+  
+   
+  <!--- anchors for socmed site are done with image sprites -->
+  <footer>
+    <a href="https://facebook.com"> 
+    <div class="icon facebook"></div>
+    </a>
+    <a href="https://twitter.com">
+    <div class="icon twitter"></div>
+    </a>
+    <a href="https://github.com">
+    <div class="icon github"></div>
+    </a>
+  </footer>
+ 
+</body>
+
+</html>
